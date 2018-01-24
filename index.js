@@ -1,6 +1,9 @@
 /* eslint-env node */
-'use strict';
+"use strict";
 
 module.exports = {
-  name: 'ember-app-version'
+  name: "ember-app-version",
+  isDevelopingAddon() {
+    return true;
+  }
 };
