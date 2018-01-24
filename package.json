@@ -1,8 +1,7 @@
 {
   "name": "ember-app-version",
-  "version": "1.0.0",
-  "description":
-    "This addon exposes a service that polls a URL to determine if a newer version of the Ember appthan the one that is currently running in the user's browser is available",
+  "version": "1.0.1",
+  "description": "This addon exposes a service that polls a URL to determine if a newer version of the Ember appthan the one that is currently running in the user's browser is available",
   "keywords": [
     "ember-addon",
     "version",
