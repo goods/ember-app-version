@@ -1,6 +1,6 @@
 # ember-app-version
 
-This addon exposes a service that polls a URL to determine if a newer version of the Ember appthan the one that is currently running in the user's browser is available . The app can then decide to reload itself, show the user a message prompting to reload, etc.
+This addon exposes a service that polls a URL to determine if a newer version of the Ember appthan the one that is currently running in the user's browser is available. The app can then decide to reload itself, show the user a message prompting to reload, etc.
 
 Depending on config, the service can read JSON at the URL (including traversing a configured path to version data) or just plain text. It is currently unopinionated about version numbers and just performs a simple comparison. If the URL version mismatches the browser version it will assume the URL version is newer.
 

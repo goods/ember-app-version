@@ -1,9 +1,15 @@
 {
   "name": "ember-app-version",
   "version": "1.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description":
+    "This addon exposes a service that polls a URL to determine if a newer version of the Ember appthan the one that is currently running in the user's browser is available",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "version",
+    "new version",
+    "polling",
+    "updates",
+    "app updates"
   ],
   "license": "MIT",
   "author": "",
@@ -11,7 +17,7 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/goods/ember-app-version",
   "scripts": {
     "build": "ember build",
     "start": "ember serve",
