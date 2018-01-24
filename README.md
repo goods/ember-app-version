@@ -1,6 +1,6 @@
 # ember-app-version
 
-This addon exposes a service that polls a URL to determine if a newer version of the Ember app is available than the one that is currently running in the user's browser. The app can then decide to reload itself, show the user a message prompting to reload, etc.
+This addon exposes a service that polls a URL to determine if a newer version of the Ember appthan the one that is currently running in the user's browser is available . The app can then decide to reload itself, show the user a message prompting to reload, etc.
 
 Depending on config, the service can read JSON at the URL (including traversing a configured path to version data) or just plain text. It is currently unopinionated about version numbers and just performs a simple comparison. If the URL version mismatches the browser version it will assume the URL version is newer.
 
@@ -35,9 +35,9 @@ This addon uses the Ember CLI project's configuration as defined in `config/envi
 * `pollInterval` (Default: `300000` 5 minutes): In ms. Interval between polls to the URL.
 * `pollDelay` (Default: `1800000` 30 minutes): In ms. Initial delay before polling starts. A freshly loaded app should be assumed to be latest version so no need to start polling straight away.
 * `autostart` (Default: `true`): Start the polling service on app load.
-* `isEnabled` (Default: `true`): Well...you know...whether the service is enabled or not. For example this should probably be disabled in development environment.
+* `isEnabled` (Default: `true`): Whether the service is enabled or not. E.g this should probably be disabled in the development environment.
 * `url` (Default: `version.json`): The URL to be polled. Can be relative or absolute.
-* `versionPath` (Default: ``): The path to traverse to obtain the version value. If value for this, reponse is is treated as JSON. If null, treated as plain text.
+* `versionPath` (Default: `version`): The path to traverse to obtain the version value. If value for this, reponse is is treated as JSON. If null, treated as plain text.
 * `extractConfigFromIndexJSON` (Default: `false`): Special case setting when using ember-cli-deploy-json-config. Set to true to extract the config from the payload.
 
 ### Example configuration for ember-cli-deploy-json-config
