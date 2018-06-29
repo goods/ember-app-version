@@ -44,7 +44,7 @@ export default Service.extend({
     yield timeout(addonConfig.pollDelay);
     while (true) {
       try {
-        let response = yield fetch(addonConfig.url);
+        let response = yield fetch(addonConfig.url, addonConfig.fetchOptions || {});
 
         let latestVersion = null;
         if (isPresent(addonConfig.versionPath)) {
@@ -60,7 +60,9 @@ export default Service.extend({
         if (isPresent(latestVersion)) {
           set(this, "latestVersion", latestVersion);
         }
-      } catch (e) {}
+      } catch (e) {
+        // continue regardless of error
+      }
 
       yield timeout(addonConfig.pollInterval);
     }
