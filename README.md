@@ -39,6 +39,7 @@ This addon uses the Ember CLI project's configuration as defined in `config/envi
 * `url` (Default: `version.json`): The URL to be polled. Can be relative or absolute.
 * `versionPath` (Default: `version`): The path to traverse to obtain the version value. If value for this, reponse is is treated as JSON. If null, treated as plain text.
 * `extractConfigFromIndexJSON` (Default: `false`): Special case setting when using ember-cli-deploy-json-config. Set to true to extract the config from the payload.
+* `fetchOptions` (Default: `{}`): Allows you to set options on the fetch request. E.g you can control cache options, headers, cors mode, etc.
 
 ### Example configuration for ember-cli-deploy-json-config
 
@@ -49,7 +50,10 @@ Install [https://github.com/ember-cli-deploy/ember-cli-deploy-json-config](ember
   "app-version": {
     url: "index.json",
     versionPath: "APP.version",
-    extractConfigFromIndexJSON: true
+    extractConfigFromIndexJSON: true,
+    fetchOptions: {
+        cache: "no-store"
+    }
   }
 ...
 ```
