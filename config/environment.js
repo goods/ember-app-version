@@ -1,4 +1,3 @@
-/* eslint-env node */
 "use strict";
 
 const ONE_MINUTE = 60000;
