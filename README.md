@@ -100,6 +100,56 @@ template.hbs
 - Ember.js v2.18 or above
 - Ember CLI v2.13 or above
 
+## Tip: AWS and caching issues
+
+Caching of the `index.json` on AWS can catch you out pretty easily leading to continous false positives for newer version notifications. Watch out for this if you're using `ember-cli-deploy-aws-pack`, `ember-cli-deploy-s3`, `ember-cli-deploy-cloudfront`.
+
+The default headers in `ember-cli-deploy-s3` give a long cache expiration, which is great for all resources apart from the one that gives the latest app version.
+
+To solve this, the s3 plugin needs to be run twice on deployment. The first uploads all the files with a long cache expiration and the second pass uploads just the index.json with no caching.
+
+Alias the S3 plugin in your deploy config:
+
+```
+  var ENV = {
+    build: {},
+    pipeline: {
+      activateOnDeploy: true,
+      alias: {
+        s3: { as: ["s3", "s3_nocache"] }
+      }
+    },
+    s3: {
+      accessKeyId: process.env.AWS_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      filePattern: "*"
+    },
+    s3_nocache: {
+      accessKeyId: process.env.AWS_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      filePattern: "index.json",
+      manifestPath: null,
+      cacheControl: "no-cache, no-store, must-revalidate",
+      expires: 0
+    },
+    cloudfront: {
+      accessKeyId: process.env.AWS_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    }
+  };
+
+  if (deployTarget === "production") {
+    ENV.build.environment = "production";
+    ENV.s3.bucket = "my-bucket";
+    ENV.s3.region = "eu-west-1";
+    ENV.s3_nocache.bucket = "my-bucket";
+    ENV.s3_nocache.region = "eu-west-1";
+    ENV.cloudfront.distribution = "ABCD1234";
+    ENV.cloudfront.objectPaths = ["/index.html", "/index.json"];
+  }
+
+```
+
 ## Installation
 
 ```
