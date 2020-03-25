@@ -11,7 +11,9 @@ const addonConfig = config.APP["app-version"];
 
 export default Service.extend({
   version() {
-    const { APP: { version } } = config;
+    const {
+      APP: { version }
+    } = config;
     return version;
   },
 
@@ -44,7 +46,10 @@ export default Service.extend({
     yield timeout(addonConfig.pollDelay);
     while (true) {
       try {
-        let response = yield fetch(addonConfig.url, addonConfig.fetchOptions || {});
+        let response = yield fetch(
+          addonConfig.url,
+          addonConfig.fetchOptions || {}
+        );
 
         let latestVersion = null;
         if (isPresent(addonConfig.versionPath)) {
