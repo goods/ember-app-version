@@ -12,14 +12,14 @@ const addonConfig = config.APP["app-version"];
 export default Service.extend({
   version() {
     const {
-      APP: { version }
+      APP: { version },
     } = config;
     return version;
   },
 
   latestVersion: null,
 
-  isNewer: computed("latestVersion", function() {
+  isNewer: computed("latestVersion", function () {
     if (Ember.testing === true || addonConfig.isEnabled === false) {
       return false;
     }
@@ -42,7 +42,7 @@ export default Service.extend({
     get(this, "checkVersion").cancelAll();
   },
 
-  checkVersion: task(function*() {
+  checkVersion: task(function* () {
     yield timeout(addonConfig.pollDelay);
     while (true) {
       try {
@@ -71,5 +71,5 @@ export default Service.extend({
 
       yield timeout(addonConfig.pollInterval);
     }
-  }).restartable()
+  }).restartable(),
 });
