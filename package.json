@@ -64,5 +64,8 @@
   },
   "ember-addon": {
     "configPath": "config"
+  },
+  "resolutions": {
+    "whatwg-fetch": "3.3.1"
   }
 }
