@@ -6,7 +6,9 @@ Depending on config, the service can read JSON at the URL (including traversing 
 
 Also - this addon will work with [https://github.com/ember-cli-deploy/ember-cli-deploy-json-config](ember-cli-deploy-json-config) out the box with a couple of config tweaks (see below).
 
-### Addon is useful when:
+* Ember.js v3.24 or above
+* Ember CLI v3.24 or above
+* Node.js v12 or above
 
 - there is a critical hotfix that needs to pushed to all users
 - users have kept a tab open in their browser for days/weeks/years and their current version is becoming unstable as the API/etc changes
